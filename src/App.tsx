@@ -1,0 +1,36 @@
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
+import HomePage from './pages/HomePage'
+import CaptchaPage from './features/captcha/pages/CaptchaPage'
+import ParticipantsPage from './features/participants/pages/ParticipantsPage'
+import VotesPage from './features/votes/pages/VotesPage'
+import ResultsPage from './features/results/pages/ResultsPage'
+import Footer from './shared/components/layout/Footer'
+import Header from './shared/components/layout/Header'
+import { Toaster } from './shared/components/ui/toaster'
+
+const App: React.FC = () => {
+  return (
+    <>
+      <Header />
+
+      <div className='pb-16'>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/captcha' element={<CaptchaPage />} />
+            <Route path='/participants' element={<ParticipantsPage />} />
+            <Route path='/votes' element={<VotesPage />} />
+            <Route path='/results' element={<ResultsPage />} />
+          </Routes>
+        </BrowserRouter>
+
+        <Toaster />
+      </div>
+      <Footer />
+    </>
+  )
+}
+
+export default App

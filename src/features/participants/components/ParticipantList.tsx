@@ -2,7 +2,9 @@ import React from 'react'
 
 import { Skeleton } from '@/shared/components/ui/skeleton'
 import { Alert, AlertDescription, AlertTitle } from '@/shared/components/ui/alert'
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card'
 
+import { Participant } from '@features/participants/entities/Participant'
 import { useGetParticipants } from '@features/participants/hooks/useParticipants'
 import { useParticipantStore } from '@features/participants/stores/useParticipantStore'
 
@@ -26,11 +28,18 @@ const ParticipantList: React.FC = () => {
     )
 
   return (
-    <ul>
-      {participants.map((participant: Participant) => (
-        <ParticipantItem key={participant.id} participant={participant} />
-      ))}
-    </ul>
+    <Card className='shadow-lg'>
+      <CardHeader>
+        <CardTitle>Participants List</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ul className='space-y-4'>
+          {participants.map((participant: Participant) => (
+            <ParticipantItem key={participant.id} participant={participant} />
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
   )
 }
 

@@ -1,5 +1,5 @@
-import { Vote } from '../entities/Vote'
-import { VoteDTO } from '../dtos/VoteDTO'
+import { Vote } from '@features/votes/entities/Vote'
+import { VoteDTO } from '@features/votes/dtos/VoteDTO'
 
 export class VoteMapper {
   static toDTO(vote: Vote): VoteDTO {

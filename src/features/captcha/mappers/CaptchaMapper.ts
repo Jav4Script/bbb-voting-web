@@ -1,18 +1,21 @@
-import { Captcha } from '../entities/Captcha'
-import { CaptchaDTO } from '../dtos/CaptchaDTO'
+import { CaptchaSolution } from '@features/captcha/entities/CaptchaSolution'
+import { CaptchaSolutionDTO } from '@features/captcha/dtos/CaptchaSolutionDTO'
 
 export class CaptchaMapper {
-  static toDTO(captcha: Captcha): CaptchaDTO {
+  static toCaptchaSolutionDTO(
+    captchaSolution: CaptchaSolution
+  ): CaptchaSolutionDTO {
     return {
-      captcha_id: captcha.captchaId,
-      captcha_image: captcha.captchaImage,
+      captcha_id: captchaSolution.captchaId,
+      captcha_solution: captchaSolution.captchaSolution,
     }
   }
-
-  static toEntity(captchaDTO: CaptchaDTO): Captcha {
+  static toCaptchaSolution(
+    captchaSolutionDTO: CaptchaSolutionDTO
+  ): CaptchaSolution {
     return {
-      captchaId: captchaDTO.captcha_id,
-      captchaImage: captchaDTO.captcha_image,
+      captchaId: captchaSolutionDTO.captcha_id,
+      captchaSolution: captchaSolutionDTO.captcha_solution,
     }
   }
 }

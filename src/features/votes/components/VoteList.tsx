@@ -22,14 +22,14 @@ const VoteList: React.FC = () => {
 
   if (isError)
     return (
-      <Alert>
+      <Alert className='mt-4'>
         <AlertTitle>Error</AlertTitle>
         <AlertDescription>Failed to load votes.</AlertDescription>
       </Alert>
     )
 
   return (
-    <ul>
+    <ul className='space-y-4'>
       {votes.map((vote: Vote) => (
         <VoteItem key={vote.voterId} vote={vote} />
       ))}

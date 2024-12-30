@@ -1,15 +1,23 @@
 import React from 'react'
 
 import { Skeleton } from '@/shared/components/ui/skeleton'
-import { Alert, AlertDescription, AlertTitle } from '@/shared/components/ui/alert'
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from '@/shared/components/ui/alert'
 
 import { useGetFinalResults, useGetPartialResults } from '../hooks/useResults'
 import ResultItem from './ResultItem'
 import { useResultStore } from '../stores/useResultStore'
 
 const ResultList: React.FC<{ type: 'final' | 'partial' }> = ({ type }) => {
-  const { isLoading, isError } = type === 'final' ? useGetFinalResults() : useGetPartialResults()
-  const results = type === 'final' ? useResultStore((state) => state.finalResults) : useResultStore((state) => state.partialResults)
+  const { isLoading, isError } =
+    type === 'final' ? useGetFinalResults() : useGetPartialResults()
+  const results =
+    type === 'final'
+      ? useResultStore((state) => state.finalResults)
+      : useResultStore((state) => state.partialResults)
 
   if (isLoading)
     return (

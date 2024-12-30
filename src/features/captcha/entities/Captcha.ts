@@ -1,4 +1,4 @@
 export interface Captcha {
-  captchaId: string
-  captchaImage: string
+  id: string
+  image: string
 }

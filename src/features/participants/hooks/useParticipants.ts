@@ -5,9 +5,8 @@ import {
   getParticipant,
   createParticipant,
   deleteParticipant,
-} from '../services/participantService'
-import { Participant } from '../entities/Participant'
-import { useParticipantStore } from '../stores/useParticipantStore'
+} from '@features/participants/services/participantService'
+import { useParticipantStore } from '@features/participants/stores/useParticipantStore'
 
 export const useGetParticipants = () => {
   const setParticipants = useParticipantStore((state) => state.setParticipants)

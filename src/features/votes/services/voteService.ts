@@ -1,15 +1,13 @@
 import api from '@/shared/services/api'
 
-import { VoteDTO } from '../dtos/VoteDTO'
-import { Vote } from '../entities/Vote'
-import { VoteMapper } from '../mappers/VoteMapper'
+import { Vote } from '@features/votes/entities/Vote'
+import { VoteMapper } from '@features/votes/mappers/VoteMapper'
 
 export const castVote = async (
   vote: Vote,
   captchaToken: string
 ): Promise<Vote> => {
-  const voteDTO = VoteMapper.toDTO(vote)
-  const { data } = await api.post('/v1/votes', voteDTO, {
+  const { data } = await api.post('/v1/votes', VoteMapper.toDTO(vote), {
     headers: {
       'X-Captcha-Token': captchaToken,
     },

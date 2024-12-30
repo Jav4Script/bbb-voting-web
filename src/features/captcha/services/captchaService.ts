@@ -1,26 +1,31 @@
 import api from '@/shared/services/api'
 
-import { CaptchaDTO } from '../dtos/CaptchaDTO'
-import { Captcha } from '../entities/Captcha'
+import { Captcha } from '@features/captcha/entities/Captcha'
+import { CaptchaSolution } from '@features/captcha/entities/CaptchaSolution'
 import { CaptchaMapper } from '../mappers/CaptchaMapper'
 
-export const getCaptcha = async (captchaId: string): Promise<Captcha> => {
-  const { data } = await api.get(`/v1/captcha/${captchaId}`)
+export const getCaptcha = async (captchaId: string): Promise<string> => {
+  const { data } = await api.get(`/v1/captcha/${captchaId}`, {
+    responseType: 'blob',
+  })
+  const imageUrl = URL.createObjectURL(data)
 
-  return CaptchaMapper.toEntity(data)
+  return imageUrl
 }
 
 export const generateCaptcha = async (): Promise<Captcha> => {
   const { data } = await api.get('/v1/generate-captcha')
 
-  return CaptchaMapper.toEntity(data)
+  return data
 }
 
-export const validateCaptcha = async (captcha: {
-  captcha_id: string
-  captcha_solution: string
-}): Promise<{ token: string }> => {
-  const { data, headers } = await api.post('/v1/validate-captcha', captcha)
+export const validateCaptcha = async (
+  captchaSolution: CaptchaSolution
+): Promise<{ token: string }> => {
+  const { headers } = await api.post(
+    '/v1/validate-captcha',
+    CaptchaMapper.toCaptchaSolutionDTO(captchaSolution)
+  )
 
-  return { token: headers['x-captcha-token'] }
+  return { captchaToken: headers['x-captcha-token'] }
 }

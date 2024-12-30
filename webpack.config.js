@@ -1,5 +1,5 @@
 import path from 'path'
-import webpack from 'webpack'
+import process from 'process'
 import Dotenv from 'dotenv-webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
@@ -42,6 +42,11 @@ export default {
       '@pages': path.resolve(process.cwd(), 'src/pages'),
       '@store': path.resolve(process.cwd(), 'src/store'),
       '@shared': path.resolve(process.cwd(), 'src/shared'),
+      '@components': path.resolve(process.cwd(), 'src/shared/components'),
+      '@hooks': path.resolve(process.cwd(), 'src/shared/hooks'),
+      '@mocks': path.resolve(process.cwd(), 'src/shared/mocks'),
+      '@services': path.resolve(process.cwd(), 'src/shared/services'),
+      '@utils': path.resolve(process.cwd(), 'src/shared/utils'),
     },
   },
   plugins: [

@@ -12,8 +12,9 @@ import {
 import { useToast } from '@/shared/hooks/useToast'
 import { useIpInfo } from '@/shared/hooks/useIpInfo'
 
-import { useCastVote } from '@features/votes/hooks/useVotes'
+import { useCastVote } from '@features/votes/hooks/useCastVote'
 import { Vote } from '@features/votes/entities/Vote'
+import EmptyState from '@/shared/components/EmptyState'
 import RadioCardGroup from '@/shared/components/RadioCardGroup'
 import RadioCardItem from '@/shared/components/RadioCardItem'
 import { useGetParticipants } from '@shared/hooks/useGetParticipants'
@@ -50,7 +51,7 @@ const VoteForm: React.FC = () => {
     }
     setValue('userAgent', navigator.userAgent)
     setValue('device', navigator.platform)
-  }, [ipInfo])
+  }, [ipInfo, setValue])
 
   const onSubmit = (data: Vote) => {
     if (captchaToken) {
@@ -103,21 +104,28 @@ const VoteForm: React.FC = () => {
                   onValueChange={field.onChange}
                   isLoading={isParticipantsLoading}
                 >
-                  {participants.map((participant) => (
-                    <RadioCardItem key={participant.id} value={participant.id}>
-                      <div className='flex flex-col'>
-                        <span className='font-bold mb-4'>
-                          {participant.name}
-                        </span>
-                        <span className='text-sm text-gray-600'>
-                          Age: {participant.age}
-                        </span>
-                        <span className='text-sm text-gray-600'>
-                          Gender: {participant.gender}
-                        </span>
-                      </div>
-                    </RadioCardItem>
-                  ))}
+                  {participants.length === 0 ? (
+                    <EmptyState message='No participants available.' />
+                  ) : (
+                    participants.map((participant) => (
+                      <RadioCardItem
+                        key={participant.id}
+                        value={participant.id}
+                      >
+                        <div className='flex flex-col'>
+                          <span className='font-bold mb-4'>
+                            {participant.name}
+                          </span>
+                          <span className='text-sm text-gray-600'>
+                            Age: {participant.age}
+                          </span>
+                          <span className='text-sm text-gray-600'>
+                            Gender: {participant.gender}
+                          </span>
+                        </div>
+                      </RadioCardItem>
+                    ))
+                  )}
                 </RadioCardGroup>
               )}
             />

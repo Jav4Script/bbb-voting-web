@@ -19,6 +19,7 @@ import { useGetParticipants } from '@/shared/hooks/useGetParticipants'
 import { useParticipantStore } from '@/shared/stores/useParticipantStore'
 
 import ParticipantItem from './ParticipantItem'
+import EmptyState from '@/shared/components/EmptyState'
 
 const ParticipantList: React.FC = () => {
   const { isLoading, isError } = useGetParticipants()
@@ -49,11 +50,18 @@ const ParticipantList: React.FC = () => {
           <CardTitle>Participants List</CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className='space-y-4'>
-            {participants.map((participant: Participant) => (
-              <ParticipantItem key={participant.id} participant={participant} />
-            ))}
-          </ul>
+          {participants.length === 0 ? (
+            <EmptyState message='No participants available.' />
+          ) : (
+            <ul className='space-y-4'>
+              {participants.map((participant: Participant) => (
+                <ParticipantItem
+                  key={participant.id}
+                  participant={participant}
+                />
+              ))}
+            </ul>
+          )}
         </CardContent>
       </Card>
     </div>

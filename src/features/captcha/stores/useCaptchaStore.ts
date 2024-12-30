@@ -6,6 +6,7 @@ interface CaptchaStore {
   captcha: Captcha | null
   setCaptcha: (captcha: Captcha) => void
   setCaptchaImage: (captchaImage: string) => void
+  clearCaptcha: () => void
 }
 
 export const useCaptchaStore = create<CaptchaStore>((set) => ({
@@ -16,4 +17,5 @@ export const useCaptchaStore = create<CaptchaStore>((set) => ({
       ...state,
       captcha: { ...state.captcha, image: captchaImage },
     })),
+  clearCaptcha: () => set((state) => ({ ...state, captcha: null })),
 }))

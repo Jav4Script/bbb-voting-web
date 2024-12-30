@@ -1,5 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
 import {
@@ -16,18 +18,27 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shared/components/ui/form'
-import { useToast } from '@/shared/hooks/use-toast'
+import { useToast } from '@/shared/hooks/useToast'
 import { useGenerateCaptcha } from '@features/captcha/hooks/useGenerateCaptcha'
 import { useValidateCaptcha } from '@features/captcha/hooks/useValidateCaptcha'
 import { useGetCaptcha } from '@features/captcha/hooks/useGetCaptcha'
 import { useCaptchaStore } from '@features/captcha/stores/useCaptchaStore'
+import { isBlobUrl } from '@shared/utils/typing'
 
 const CaptchaForm: React.FC = () => {
-  const { mutate: generateCaptcha } = useGenerateCaptcha()
-  const { mutate: validateCaptcha } = useValidateCaptcha()
+  const { mutate: generateCaptcha, isLoading: isGeneratingCaptcha } =
+    useGenerateCaptcha()
+  const { mutate: validateCaptcha, isLoading: isValidatingCaptcha } =
+    useValidateCaptcha()
   const captcha = useCaptchaStore((state) => state.captcha)
+  const clearCaptcha = useCaptchaStore((state) => state.clearCaptcha)
   const { toast } = useToast()
-  const form = useForm<{ captchaSolution: string }>()
+  const form = useForm<{ captchaSolution: string }>({
+    defaultValues: {
+      captchaSolution: '',
+    },
+  })
+  const navigate = useNavigate()
 
   useGetCaptcha({
     captchaId: captcha?.id,
@@ -64,6 +75,8 @@ const CaptchaForm: React.FC = () => {
               description: 'Captcha validated successfully!',
               variant: 'default',
             })
+            clearCaptcha()
+            navigate('/votes')
           },
           onError: () => {
             toast({
@@ -77,6 +90,10 @@ const CaptchaForm: React.FC = () => {
     }
   }
 
+  const handleBackToHome = () => {
+    navigate('/')
+  }
+
   return (
     <Card className='shadow-lg'>
       <CardHeader>
@@ -85,11 +102,15 @@ const CaptchaForm: React.FC = () => {
 
       <CardContent>
         <div className='space-y-6'>
-          <Button onClick={handleGenerateCaptcha} className='w-full'>
-            Generate Captcha
+          <Button
+            onClick={handleGenerateCaptcha}
+            className='w-full'
+            disabled={isGeneratingCaptcha}
+          >
+            {isGeneratingCaptcha ? 'Generating...' : 'Generate Captcha'}
           </Button>
 
-          {captcha && captcha.image && (
+          {captcha && isBlobUrl(captcha.image) && (
             <div className='space-y-4'>
               <img src={captcha.image} alt='Captcha' className='mx-auto' />
               <Form {...form}>
@@ -114,13 +135,20 @@ const CaptchaForm: React.FC = () => {
                       </FormItem>
                     )}
                   />
-                  <Button type='submit' className='w-full'>
-                    Validate Captcha
+                  <Button
+                    type='submit'
+                    className='w-full'
+                    disabled={isValidatingCaptcha}
+                  >
+                    {isValidatingCaptcha ? 'Validating...' : 'Validate Captcha'}
                   </Button>
                 </form>
               </Form>
             </div>
           )}
+          <Button onClick={handleBackToHome} className='w-full'>
+            Back to Home
+          </Button>
         </div>
       </CardContent>
     </Card>

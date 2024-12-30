@@ -1,8 +1,8 @@
 import { useMutation } from 'react-query'
 
+import { CaptchaSolution } from '@features/captcha/entities/CaptchaSolution'
 import { validateCaptcha } from '@features/captcha/services/captchaService'
 import { useCaptchaTokenStore } from '@/shared/stores/useCaptchaTokenStore'
-import { CaptchaSolution } from '@features/captcha/entities/CaptchaSolution'
 
 export const useValidateCaptcha = () => {
   const setCaptchaToken = useCaptchaTokenStore((state) => state.setCaptchaToken)
@@ -12,7 +12,7 @@ export const useValidateCaptcha = () => {
       validateCaptcha({ captchaId, captchaSolution }),
     {
       onSuccess: (data) => {
-        setCaptchaToken(data.token)
+        setCaptchaToken(data.captchaToken)
       },
     }
   )

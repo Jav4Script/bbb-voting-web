@@ -1,114 +1,111 @@
 # 📝 BBB Voting Web
 
 - [📝 BBB Voting Web](#-bbb-voting-web)
-  - [📜 Description](#-description)
-  - [✨ Features](#-features)
+  - [📜 Descrição](#-descrição)
+  - [✨ Funcionalidades](#-funcionalidades)
   - [🛠️ Stack](#️-stack)
-  - [🖥️ Setup Steps](#️-setup-steps)
-  - [📚 Project Structure](#-project-structure)
-  - [📝 License](#-license)
+  - [🖥️ Passos para Configuração](#️-passos-para-configuração)
+  - [📚 Estrutura do Projeto](#-estrutura-do-projeto)
+  - [🧹 Boas Práticas de Clean Code](#-boas-práticas-de-clean-code)
+  - [🧩 Boas Práticas de Nomeação](#-boas-práticas-de-nomeação)
+  - [📐 Bons Padrões de Codificação](#-bons-padrões-de-codificação)
+  - [📝 Licença](#-licença)
 
-## 📜 Description
+## 📜 Descrição
 
-Welcome to the **BBB Voting Web** frontend project! This application allows users to manage BBB voting using a beautiful, responsive UI built with React, Zustand, Tailwind CSS, and ShadCN UI. We also use React Query for fetching data and Axios for API communication.
+Bem-vindo ao projeto frontend **BBB Voting Web**! Esta aplicação permite que os usuários gerenciem a votação do BBB usando uma interface bonita e responsiva construída com React, Zustand, Tailwind CSS e ShadCN UI. Também usamos React Query para buscar dados e Axios para comunicação com a API.
 
-## ✨ Features
+## ✨ Funcionalidades
 
-- Participants Management: Create, view, and delete participants.
-- Captcha Verification: Vote using captcha validation.
-- BBB Voting system: Vote for your favorite participant.
-- Results: View the results of the voting.
-- Responsive UI: Built with Tailwind CSS, optimized for all screen sizes.
-- State Management: Lightweight state management using Zustand.
-- Design System: Consistent and accessible components with ShadCN UI.
-- Feature-based architecture: Each feature has its own directory, promoting modularity and scalability.
+- Gerenciamento de Participantes: Criar, visualizar e excluir participantes.
+- Verificação de Captcha: Votar usando validação de captcha.
+- Sistema de Votação do BBB: Vote no seu participante favorito.
+- Resultados: Visualize os resultados da votação.
+- UI Responsiva: Construída com Tailwind CSS, otimizada para todos os tamanhos de tela.
+- Gerenciamento de Estado: Gerenciamento de estado leve usando Zustand.
+- Sistema de Design: Componentes consistentes e acessíveis com ShadCN UI.
+- Arquitetura baseada em funcionalidades: Cada funcionalidade tem seu próprio diretório, promovendo modularidade e escalabilidade.
 
 ## 🛠️ Stack
 
-- React: JavaScript library for building user interfaces.
-- Zustand: State management for storing data.
-- Tailwind CSS: Utility-first CSS framework for rapid styling.
-- ShadCN UI: A design system for building consistent, accessible UIs.
-- React Query: For server state management and data fetching.
-- Axios: For making HTTP requests.
+- React: Biblioteca JavaScript para construção de interfaces de usuário.
+- Zustand: Gerenciamento de estado para armazenamento de dados.
+- Tailwind CSS: Framework CSS utilitário para estilização rápida.
+- ShadCN UI: Um sistema de design para construção de UIs consistentes e acessíveis.
+- React Query: Para gerenciamento de estado do servidor e busca de dados.
+- Axios: Para fazer requisições HTTP.
 
-## 🖥️ Setup Steps
+## 🖥️ Passos para Configuração
 
-1. Install Node.js
-   Before getting started, make sure Node.js is installed on your machine. Node.js includes npm, which will be used to install PNPM.
+1. Instale o Node.js
+   Antes de começar, certifique-se de que o Node.js está instalado na sua máquina. O Node.js inclui o npm, que será usado para instalar o PNPM.
 
-Download and install Node.js
-Verify the installation of Node.js and npm by running the following command:
+Baixe e instale o Node.js
+Verifique a instalação do Node.js e npm executando o seguinte comando:
 
 ```bash
 node -v
 npm -v
 ```
 
-2. Install PNPM globally
-   If PNPM is not already installed, you can install it globally using npm:
+2. Instale o PNPM globalmente
+   Se o PNPM ainda não estiver instalado, você pode instalá-lo globalmente usando o npm:
 
 ```bash
 npm install -g pnpm
 ```
 
-Verify that PNPM has been installed correctly:
+Verifique se o PNPM foi instalado corretamente:
 
 ```bash
 pnpm -v
 ```
 
-3. Clone the repository
+3. Clone o repositório
 
 ```bash
 git clone https://github.com/Jav4Script/bbb-voting-web.git
 cd bbb-voting-web
 ```
 
-4. Install PNPM:
-
-```bash
-npm install -g pnpm
-```
-
-5. Install dependencies using PNPM:
+4. Instale as dependências usando o PNPM:
 
 ```bash
 pnpm install
 ```
 
-6. Create a .env file:
-   Create a `.env` file in the root of the project with the following variables:
+5. Crie um arquivo .env:
+   Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 
 ```bash
 REACT_APP_API_BASE_URL=http://localhost:8000
 ```
 
-7. Start the development server:
+6. Inicie o servidor de desenvolvimento:
 
 ```bash
 pnpm start
 ```
 
-8. Execute unit tests:
+7. Execute os testes unitários:
 
 ```bash
 pnpm test
 ```
 
-9.  Build the project for production:
+8. Construa o projeto para produção:
 
 ```bash
 pnpm build
 ```
 
-9. Run Tailwind CSS build script:
+9. Execute o script de build do Tailwind CSS:
 
 ```bash
 pnpm tailwind:build
 ```
 
-## 📚 Project Structure
+## 📚 Estrutura do Projeto
 
 ```
 .
@@ -160,7 +157,7 @@ pnpm tailwind:build
 │   │   │   ├── services/
 │   │   │   │   └── participantService.ts
 │   │   │   ├── stores/
-│   │   │   │   └── useParticipantStore.ts
+│   │   │       └── useParticipantStore.ts
 │   │   │   └── dtos/
 │   │   │       └── ParticipantDTO.ts
 │   │   ├── results/
@@ -203,7 +200,7 @@ pnpm tailwind:build
 │   │   │   ├── stores/
 │   │   │       └── useVoteStore.ts
 │   ├── hooks/
-│   │   └── use-toast.ts
+│   │   └── useToast.ts
 │   ├── index.tsx
 │   ├── pages/
 │   │   ├── HomePage.spec.tsx
@@ -243,6 +240,64 @@ pnpm tailwind:build
 └── webpack.config.js
 ```
 
-## 📝 License
+## 🧹 Boas Práticas de Clean Code
 
-This project is licensed under the MIT License.
+Manter boas práticas de clean code é essencial para garantir que o código seja legível, sustentável e fácil de manter. Aqui estão algumas práticas recomendadas:
+
+- **Nomes Significativos**: Use nomes descritivos e precisos para variáveis, funções e classes, que reflitam claramente sua finalidade.
+- **Funções Pequenas**: Mantenha as funções curtas e focadas em uma única tarefa. Funções menores são mais fáceis de entender, testar e manter.
+- **Evite Comentários Desnecessários**: Escreva código claro e autoexplicativo que não precise de muitos comentários. Use comentários para explicar o "porquê" e não o "como".
+- **Consistência**: Siga um estilo de codificação consistente em todo o projeto. Utilize ferramentas como linters e formatadores automáticos para manter a consistência.
+- **Tratamento de Erros**: Lide com erros de forma adequada e consistente. Use exceções para situações excepcionais e valide entradas para evitar erros.
+- **Evite Código Duplicado**: Reutilize código sempre que possível para evitar duplicação. Utilize funções, classes e módulos para encapsular lógica reutilizável.
+- **Responsabilidade Única**: Cada módulo, classe ou função deve ter uma única responsabilidade bem definida.
+- **Modularidade**: Divida o código em módulos pequenos e independentes que possam ser facilmente testados e mantidos.
+- **Legibilidade**: Priorize a legibilidade do código. Use espaçamento, indentação e quebras de linha para tornar o código mais fácil de ler.
+- **Refatoração Regular**: Refatore o código regularmente para melhorar sua estrutura e legibilidade sem alterar seu comportamento externo.
+
+Para mais detalhes, consulte o guia completo de clean code em JavaScript [aqui](https://github.com/ryanmcdermott/clean-code-javascript) e TypeScript [aqui](https://github.com/labs42io/clean-code-typescript).
+
+## 🧩 Boas Práticas de Nomeação
+
+Seguir boas práticas de nomeação é crucial para garantir que o código seja fácil de entender e manter. Aqui estão algumas recomendações:
+
+- **Seja Descritivo**: Use nomes que descrevam claramente a finalidade da variável, função ou classe. Nomes descritivos ajudam a entender o código sem precisar de contexto adicional.
+- **Use Padrões Consistentes**: Adote convenções de nomenclatura consistentes, como camelCase para variáveis e funções, e PascalCase para classes. Consistência facilita a leitura e manutenção do código.
+- **Evite Abreviações**: Prefira nomes completos e descritivos em vez de abreviações que podem ser confusas. Abreviações podem dificultar a compreensão do código.
+- **Contexto é Importante**: Inclua contexto suficiente nos nomes para que eles façam sentido fora de seu escopo imediato. Nomes contextuais ajudam a evitar ambiguidades.
+- **Prefira Nomes Pronunciáveis**: Use nomes que possam ser facilmente pronunciados e lembrados. Nomes pronunciáveis facilitam a comunicação sobre o código.
+- **Use Substantivos para Classes**: Nomeie classes com substantivos que descrevam claramente o que a classe representa.
+- **Use Verbos para Funções**: Nomeie funções com verbos que descrevam claramente a ação que a função realiza.
+- **Evite Nomes Genéricos**: Evite nomes genéricos como `data`, `item` ou `value`. Prefira nomes específicos que descrevam a finalidade do elemento.
+- **Use Prefixos e Sufixos Quando Necessário**: Use prefixos e sufixos para adicionar contexto adicional aos nomes, como `is` para booleanos (`isActive`) ou `count` para contadores (`userCount`).
+
+Para mais detalhes, consulte o guia completo de boas práticas de nomeação [aqui](https://github.com/kettanaito/naming-cheatsheet).
+
+## 📐 Bons Padrões de Codificação
+
+Seguir bons padrões de codificação é essencial para criar um código que seja fácil de entender, manter e escalar. Aqui estão alguns dos principais padrões de codificação que você deve considerar:
+
+- **SOLID**: Um conjunto de princípios de design orientado a objetos que ajudam a criar sistemas mais compreensíveis, flexíveis e de fácil manutenção.
+  - **S**: Single Responsibility Principle (Princípio da Responsabilidade Única)
+  - **O**: Open/Closed Principle (Princípio Aberto/Fechado)
+  - **L**: Liskov Substitution Principle (Princípio da Substituição de Liskov)
+  - **I**: Interface Segregation Principle (Princípio da Segregação de Interface)
+  - **D**: Dependency Inversion Principle (Princípio da Inversão de Dependência)
+
+- **DRY (Don't Repeat Yourself)**: Evite duplicação de código. Cada parte do conhecimento deve ter uma representação única, não ambígua e autoritativa dentro de um sistema.
+
+- **YAGNI (You Aren't Gonna Need It)**: Não adicione funcionalidades até que elas sejam realmente necessárias. Isso ajuda a manter o código simples e focado.
+
+- **KISS (Keep It Simple, Stupid)**: Mantenha o código o mais simples possível. Complexidade desnecessária deve ser evitada.
+
+- **TDD (Test-Driven Development)**: Escreva testes antes de escrever o código funcional. Isso ajuda a garantir que o código seja testável e que os requisitos sejam claros.
+
+- **BDD (Behavior-Driven Development)**: Uma extensão do TDD que se concentra no comportamento do sistema em vez de apenas na funcionalidade.
+
+- **CI/CD (Continuous Integration/Continuous Deployment)**: Práticas que envolvem a integração contínua de código e a entrega contínua de software, garantindo que o código esteja sempre em um estado de prontidão para produção.
+
+Esses recursos fornecem uma visão abrangente sobre boas práticas de codificação e padrões de design que podem ajudar a melhorar a qualidade do seu código.
+
+## 📝 Licença
+
+Este projeto está licenciado sob a Licença MIT.

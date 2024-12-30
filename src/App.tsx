@@ -5,7 +5,8 @@ import HomePage from './pages/HomePage'
 import CaptchaPage from './features/captcha/pages/CaptchaPage'
 import ParticipantsPage from './features/participants/pages/ParticipantsPage'
 import VotesPage from './features/votes/pages/VotesPage'
-import ResultsPage from './features/results/pages/ResultsPage'
+import PartialResultsPage from './features/results/pages/PartialResultsPage'
+import FinalResultsPage from './features/results/pages/FinalResultsPage'
 import Footer from './shared/components/layout/Footer'
 import Header from './shared/components/layout/Header'
 import ProtectedRoute from './shared/components/ProtectedRoute'
@@ -25,13 +26,14 @@ const App: React.FC = () => {
             <Route path='/votes' element={<ProtectedRoute />}>
               <Route path='' element={<VotesPage />} />
             </Route>
-            <Route path='/results' element={<ResultsPage />} />
+            <Route path='/results/partial' element={<PartialResultsPage />} />
+            <Route path='/results/final' element={<FinalResultsPage />} />
           </Routes>
         </BrowserRouter>
-
-        <Toaster />
       </div>
+
       <Footer />
+      <Toaster />
     </>
   )
 }

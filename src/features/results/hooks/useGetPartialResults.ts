@@ -1,10 +1,12 @@
 import { useQuery } from 'react-query'
 
 import { getPartialResults } from '@features/results/services/resultService'
-import { useResultStore } from '@features/results/stores/useResultStore'
+import { usePartialResultStore } from '@features/results/stores/usePartialResultStore'
 
 export const useGetPartialResults = () => {
-  const setPartialResults = useResultStore((state) => state.setPartialResults)
+  const setPartialResults = usePartialResultStore(
+    (state) => state.setPartialResults
+  )
 
   return useQuery('partialResults', getPartialResults, {
     onSuccess: (data) => {

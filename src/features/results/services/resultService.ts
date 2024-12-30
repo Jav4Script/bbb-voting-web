@@ -1,21 +1,17 @@
 import api from '@/shared/services/api'
 
-import { FinalResult } from '@features/results/entities/FinalResult'
 import { PartialResult } from '@features/results/entities/PartialResult'
 import { ResultMapper } from '@features/results/mappers/ResultMapper'
+import { FinalResults } from '@features/results/entities/FinalResults'
 
 export const getPartialResults = async (): Promise<PartialResult[]> => {
   const { data } = await api.get('/v1/results/partial')
 
-  console.log('partial', data)
-
-  return data.map(ResultMapper.toPartialResultEntity)
+  return data
 }
 
-export const getFinalResults = async (): Promise<FinalResult[]> => {
+export const getFinalResults = async (): Promise<FinalResults> => {
   const { data } = await api.get('/v1/results/final')
 
-  console.log('final', data)
-
-  return data.map(ResultMapper.toFinalResultEntity)
+  return ResultMapper.toFinalResultEntity(data)
 }

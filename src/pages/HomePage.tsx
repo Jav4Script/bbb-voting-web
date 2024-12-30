@@ -29,8 +29,12 @@ const HomePage: React.FC = () => {
     navigate('/captcha')
   }
 
-  const navigateToResults = () => {
-    navigate('/results')
+  const navigateToPartialResults = () => {
+    navigate('/results/partial')
+  }
+
+  const navigateToFinalResults = () => {
+    navigate('/results/final')
   }
 
   return (
@@ -82,14 +86,26 @@ const HomePage: React.FC = () => {
         </Card>
 
         <Card
-          onClick={navigateToResults}
+          onClick={navigateToPartialResults}
           className='cursor-pointer bg-accent text-accent-foreground'
         >
           <CardHeader>
-            <CardTitle>View Results</CardTitle>
+            <CardTitle>View Partial Results</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Check partial and final voting results.</p>
+            <p>Check partial voting results.</p>
+          </CardContent>
+        </Card>
+
+        <Card
+          onClick={navigateToFinalResults}
+          className='cursor-pointer bg-accent text-accent-foreground'
+        >
+          <CardHeader>
+            <CardTitle>View Final Results</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>Check final voting results.</p>
           </CardContent>
         </Card>
       </div>

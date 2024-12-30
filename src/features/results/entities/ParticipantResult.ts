@@ -1,4 +1,4 @@
-export interface PartialResult {
+export interface ParticipantResult {
   id: string
   name: string
   age: number

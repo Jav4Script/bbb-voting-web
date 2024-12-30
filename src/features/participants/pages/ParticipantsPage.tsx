@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import ParticipantForm from '../components/ParticipantForm'
-import ParticipantList from '../components/ParticipantList'
 import { Button } from '@/shared/components/ui/button'
+
+import ParticipantForm from '@features/participants/components/ParticipantForm'
+import ParticipantList from '@features/participants/components/ParticipantList'
 
 const ParticipantsPage: React.FC = () => {
   const navigate = useNavigate()

@@ -3,12 +3,24 @@ import { useForm } from 'react-hook-form'
 
 import { Button } from '@/shared/components/ui/button'
 import { Input } from '@/shared/components/ui/input'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/components/ui/form'
-import { useToast } from '@/shared/hooks/use-toast'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/shared/components/ui/card'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/shared/components/ui/form'
+import { useToast } from '@/shared/hooks/useToast'
 
-import { useCreateParticipant } from '@features/participants/hooks/useParticipants'
-import { Participant } from '@features/participants/entities/Participant'
+import { useCreateParticipant } from '@/shared/hooks/useCreateParticipant'
+import { Participant } from '@/shared/entities/Participant'
 
 const ParticipantForm: React.FC = () => {
   const form = useForm<Participant>({
@@ -84,9 +96,6 @@ const ParticipantForm: React.FC = () => {
                   <FormMessage />
                 </FormItem>
               )}
-              rules={{
-                valueAsNumber: true, // This ensures the value is converted to a number
-              }}
             />
             <FormField
               name='gender'
@@ -101,7 +110,9 @@ const ParticipantForm: React.FC = () => {
                 </FormItem>
               )}
             />
-            <Button type='submit' className='w-full'>Create Participant</Button>
+            <Button type='submit' className='w-full'>
+              Create Participant
+            </Button>
           </form>
         </Form>
       </CardContent>

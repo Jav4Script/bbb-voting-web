@@ -1,13 +1,20 @@
 import React from 'react'
 
 import { Button } from '@/shared/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card'
-import { useToast } from '@/shared/hooks/use-toast'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/shared/components/ui/card'
+import { useToast } from '@/shared/hooks/useToast'
 
-import { useDeleteParticipant } from '@features/participants/hooks/useParticipants'
-import { Participant } from '@features/participants/entities/Participant'
+import { useDeleteParticipant } from '@/shared/hooks/useDeleteParticipant'
+import { Participant } from '@/shared/entities/Participant'
 
-const ParticipantItem: React.FC<{ participant: Participant }> = ({ participant }) => {
+const ParticipantItem: React.FC<{ participant: Participant }> = ({
+  participant,
+}) => {
   const { mutate: deleteParticipant } = useDeleteParticipant()
   const { toast } = useToast()
 

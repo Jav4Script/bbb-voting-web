@@ -8,6 +8,7 @@ import VotesPage from './features/votes/pages/VotesPage'
 import ResultsPage from './features/results/pages/ResultsPage'
 import Footer from './shared/components/layout/Footer'
 import Header from './shared/components/layout/Header'
+import ProtectedRoute from './shared/components/ProtectedRoute'
 import { Toaster } from './shared/components/ui/toaster'
 
 const App: React.FC = () => {
@@ -21,7 +22,9 @@ const App: React.FC = () => {
             <Route path='/' element={<HomePage />} />
             <Route path='/captcha' element={<CaptchaPage />} />
             <Route path='/participants' element={<ParticipantsPage />} />
-            <Route path='/votes' element={<VotesPage />} />
+            <Route path='/votes' element={<ProtectedRoute />}>
+              <Route path='' element={<VotesPage />} />
+            </Route>
             <Route path='/results' element={<ResultsPage />} />
           </Routes>
         </BrowserRouter>

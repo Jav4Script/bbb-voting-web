@@ -48,15 +48,15 @@ const ParticipantForm: React.FC = () => {
           gender: '',
         })
         toast({
-          title: 'Success',
-          description: 'Participant created successfully!',
+          title: 'Sucesso',
+          description: 'Participante criado com sucesso!',
           variant: 'default',
         })
       },
       onError: () => {
         toast({
-          title: 'Error',
-          description: 'Failed to create participant.',
+          title: 'Erro',
+          description: 'Falha ao criar participante.',
           variant: 'destructive',
         })
       },
@@ -66,7 +66,7 @@ const ParticipantForm: React.FC = () => {
   return (
     <Card className='shadow-lg'>
       <CardHeader>
-        <CardTitle>Create Participant</CardTitle>
+        <CardTitle>Criar Participante</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -76,7 +76,7 @@ const ParticipantForm: React.FC = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -89,7 +89,7 @@ const ParticipantForm: React.FC = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Age</FormLabel>
+                  <FormLabel>Idade</FormLabel>
                   <FormControl>
                     <Input type='number' {...field} />
                   </FormControl>
@@ -102,7 +102,7 @@ const ParticipantForm: React.FC = () => {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Gender</FormLabel>
+                  <FormLabel>Gênero</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -111,7 +111,7 @@ const ParticipantForm: React.FC = () => {
               )}
             />
             <Button type='submit' className='w-full'>
-              Create Participant
+              Criar Participante
             </Button>
           </form>
         </Form>

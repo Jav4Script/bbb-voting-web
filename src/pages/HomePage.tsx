@@ -40,11 +40,11 @@ const HomePage: React.FC = () => {
   return (
     <div className='container mx-auto p-4 bg-background min-h-screen flex flex-col items-center justify-center'>
       <h1 className='text-4xl font-bold mb-6 text-center text-foreground'>
-        Welcome
+        Bem-vindo
       </h1>
 
       <p className='text-lg mb-4 text-center text-foreground'>
-        Welcome to the BBB Voting application!
+        Bem-vindo ao aplicativo de votação do BBB!
       </p>
 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -53,10 +53,10 @@ const HomePage: React.FC = () => {
           className='cursor-pointer bg-primary text-primary-foreground'
         >
           <CardHeader>
-            <CardTitle>Manage Participants</CardTitle>
+            <CardTitle>Gerenciar Participantes</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Register, list, and delete participants.</p>
+            <p>Registrar, listar e excluir participantes.</p>
           </CardContent>
         </Card>
 
@@ -73,13 +73,14 @@ const HomePage: React.FC = () => {
           }`}
         >
           <CardHeader>
-            <CardTitle>Start Voting</CardTitle>
+            <CardTitle>Iniciar Votação</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Generate CAPTCHA and cast your vote.</p>
+            <p>Gerar CAPTCHA e registrar seu voto.</p>
             {participants && participants.length < 2 && (
               <p className='text-red-500 mt-2'>
-                At least 2 participants are required to start voting.
+                Pelo menos 2 participantes são necessários para iniciar a
+                votação.
               </p>
             )}
           </CardContent>
@@ -90,10 +91,10 @@ const HomePage: React.FC = () => {
           className='cursor-pointer bg-accent text-accent-foreground'
         >
           <CardHeader>
-            <CardTitle>View Partial Results</CardTitle>
+            <CardTitle>Ver Resultados Parciais</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Check partial voting results.</p>
+            <p>Verificar resultados parciais da votação.</p>
           </CardContent>
         </Card>
 
@@ -102,10 +103,10 @@ const HomePage: React.FC = () => {
           className='cursor-pointer bg-accent text-accent-foreground'
         >
           <CardHeader>
-            <CardTitle>View Final Results</CardTitle>
+            <CardTitle>Ver Resultados Finais</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Check final voting results.</p>
+            <p>Verificar resultados finais da votação.</p>
           </CardContent>
         </Card>
       </div>

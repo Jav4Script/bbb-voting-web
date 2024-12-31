@@ -21,7 +21,7 @@ import {
 import { useToast } from '@/shared/hooks/useToast'
 import { useGenerateCaptcha } from '@features/captcha/hooks/useGenerateCaptcha'
 import { useValidateCaptcha } from '@features/captcha/hooks/useValidateCaptcha'
-import { useGetCaptcha } from '@features/captcha/hooks/useGetCaptcha'
+import { useGetCaptchaImage } from '@/features/captcha/hooks/useGetCaptchaImage'
 import { useCaptchaStore } from '@features/captcha/stores/useCaptchaStore'
 import { isBlobUrl } from '@shared/utils/typing'
 
@@ -40,28 +40,16 @@ const CaptchaForm: React.FC = () => {
   })
   const navigate = useNavigate()
 
-  useGetCaptcha({
+  const shouldDisplayCaptchaImage =
+    captcha && captcha.image && isBlobUrl(captcha.image)
+
+  useGetCaptchaImage({
     captchaId: captcha?.id,
     enabled: !!captcha?.id,
   })
 
   const handleGenerateCaptcha = () => {
-    generateCaptcha(undefined, {
-      onSuccess: () => {
-        toast({
-          title: 'Success',
-          description: 'Captcha generated successfully!',
-          variant: 'default',
-        })
-      },
-      onError: () => {
-        toast({
-          title: 'Error',
-          description: 'Failed to generate captcha.',
-          variant: 'destructive',
-        })
-      },
-    })
+    generateCaptcha(undefined)
   }
 
   const handleValidateCaptcha = (data: { captchaSolution: string }) => {
@@ -71,8 +59,8 @@ const CaptchaForm: React.FC = () => {
         {
           onSuccess: () => {
             toast({
-              title: 'Success',
-              description: 'Captcha validated successfully!',
+              title: 'Sucesso',
+              description: 'Captcha validado com sucesso!',
               variant: 'default',
             })
             clearCaptcha()
@@ -80,10 +68,12 @@ const CaptchaForm: React.FC = () => {
           },
           onError: () => {
             toast({
-              title: 'Error',
-              description: 'Failed to validate captcha.',
+              title: 'Erro',
+              description: 'Falha ao validar o captcha.',
               variant: 'destructive',
             })
+            handleGenerateCaptcha()
+            form.reset()
           },
         }
       )
@@ -97,7 +87,7 @@ const CaptchaForm: React.FC = () => {
   return (
     <Card className='shadow-lg'>
       <CardHeader>
-        <CardTitle>Captcha Verification</CardTitle>
+        <CardTitle>Verificação de Captcha</CardTitle>
       </CardHeader>
 
       <CardContent>
@@ -107,10 +97,10 @@ const CaptchaForm: React.FC = () => {
             className='w-full'
             disabled={isGeneratingCaptcha}
           >
-            {isGeneratingCaptcha ? 'Generating...' : 'Generate Captcha'}
+            {isGeneratingCaptcha ? 'Gerando...' : 'Gerar Captcha'}
           </Button>
 
-          {captcha && isBlobUrl(captcha.image) && (
+          {shouldDisplayCaptchaImage && (
             <div className='space-y-4'>
               <img src={captcha.image} alt='Captcha' className='mx-auto' />
               <Form {...form}>
@@ -123,12 +113,12 @@ const CaptchaForm: React.FC = () => {
                     control={form.control}
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Enter Captcha</FormLabel>
+                        <FormLabel>Digite o Captcha</FormLabel>
                         <FormControl>
                           <Input
                             type='text'
                             {...field}
-                            placeholder='Enter Captcha'
+                            placeholder='Digite o Captcha'
                           />
                         </FormControl>
                         <FormMessage />
@@ -140,14 +130,14 @@ const CaptchaForm: React.FC = () => {
                     className='w-full'
                     disabled={isValidatingCaptcha}
                   >
-                    {isValidatingCaptcha ? 'Validating...' : 'Validate Captcha'}
+                    {isValidatingCaptcha ? 'Validando...' : 'Validar Captcha'}
                   </Button>
                 </form>
               </Form>
             </div>
           )}
           <Button onClick={handleBackToHome} className='w-full'>
-            Back to Home
+            Voltar para Home
           </Button>
         </div>
       </CardContent>

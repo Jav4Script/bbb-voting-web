@@ -22,15 +22,15 @@ const ParticipantItem: React.FC<{ participant: Participant }> = ({
     deleteParticipant(participant.id, {
       onSuccess: () => {
         toast({
-          title: 'Success',
-          description: 'Participant deleted successfully!',
+          title: 'Sucesso',
+          description: 'Participante excluído com sucesso!',
           variant: 'default',
         })
       },
       onError: () => {
         toast({
-          title: 'Error',
-          description: 'Failed to delete participant.',
+          title: 'Erro',
+          description: 'Falha ao excluir participante.',
           variant: 'destructive',
         })
       },
@@ -43,10 +43,10 @@ const ParticipantItem: React.FC<{ participant: Participant }> = ({
         <CardTitle>{participant.name}</CardTitle>
       </CardHeader>
       <CardContent className='flex flex-col items-center'>
-        <p>Age: {participant.age}</p>
-        <p>Gender: {participant.gender}</p>
+        <p>Idade: {participant.age}</p>
+        <p>Gênero: {participant.gender}</p>
         <Button onClick={handleDelete} variant='destructive' className='mt-4'>
-          Delete
+          Excluir
         </Button>
       </CardContent>
     </Card>

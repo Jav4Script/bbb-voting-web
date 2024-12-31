@@ -62,34 +62,28 @@ const VoteForm: React.FC = () => {
             reset()
             clearCaptchaToken()
             toast({
-              title: 'Success',
-              description: 'Vote cast successfully!',
+              title: 'Sucesso',
+              description: 'Voto registrado com sucesso!',
               variant: 'default',
             })
             navigate('/captcha')
           },
           onError: () => {
             toast({
-              title: 'Error',
-              description: 'Failed to cast vote.',
+              title: 'Erro',
+              description: 'Falha ao registrar voto.',
               variant: 'destructive',
             })
           },
         }
       )
-    } else {
-      toast({
-        title: 'Error',
-        description: 'Please validate the CAPTCHA first.',
-        variant: 'destructive',
-      })
     }
   }
 
   return (
     <Card className='shadow-lg'>
       <CardHeader>
-        <CardTitle>Cast Your Vote</CardTitle>
+        <CardTitle>Formulário de Votação</CardTitle>
       </CardHeader>
       <CardContent>
         <FormProvider {...methods}>
@@ -97,7 +91,7 @@ const VoteForm: React.FC = () => {
             <Controller
               name='participantId'
               control={methods.control}
-              rules={{ required: 'Participant is required' }}
+              rules={{ required: 'Participante é obrigatório' }}
               render={({ field }) => (
                 <RadioCardGroup
                   value={field.value}
@@ -105,7 +99,7 @@ const VoteForm: React.FC = () => {
                   isLoading={isParticipantsLoading}
                 >
                   {participants.length === 0 ? (
-                    <EmptyState message='No participants available.' />
+                    <EmptyState message='Nenhum participante disponível.' />
                   ) : (
                     participants.map((participant) => (
                       <RadioCardItem
@@ -117,10 +111,10 @@ const VoteForm: React.FC = () => {
                             {participant.name}
                           </span>
                           <span className='text-sm text-gray-600'>
-                            Age: {participant.age}
+                            Idade: {participant.age}
                           </span>
                           <span className='text-sm text-gray-600'>
-                            Gender: {participant.gender}
+                            Gênero: {participant.gender}
                           </span>
                         </div>
                       </RadioCardItem>
@@ -130,7 +124,7 @@ const VoteForm: React.FC = () => {
               )}
             />
             <Button type='submit' className='w-full' disabled={isLoading}>
-              {isLoading ? 'Loading...' : 'Cast Vote'}
+              {isLoading ? 'Carregando...' : 'Registrar Voto'}
             </Button>
           </form>
         </FormProvider>

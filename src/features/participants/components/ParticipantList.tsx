@@ -37,8 +37,8 @@ const ParticipantList: React.FC = () => {
       <div className='mx-4 md:mx-6 lg:mx-8'>
         <Alert>
           <ExclamationTriangleIcon className='h-5 w-5 text-red-500' />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>Failed to load participants.</AlertDescription>
+          <AlertTitle>Erro</AlertTitle>
+          <AlertDescription>Falha ao carregar participantes.</AlertDescription>
         </Alert>
       </div>
     )
@@ -47,11 +47,11 @@ const ParticipantList: React.FC = () => {
     <div className='mx-4 md:mx-6 lg:mx-8'>
       <Card className='shadow-lg'>
         <CardHeader>
-          <CardTitle>Participants List</CardTitle>
+          <CardTitle>Lista de Participantes</CardTitle>
         </CardHeader>
         <CardContent>
           {participants.length === 0 ? (
-            <EmptyState message='No participants available.' />
+            <EmptyState message='Nenhum participante disponível.' />
           ) : (
             <ul className='space-y-4'>
               {participants.map((participant: Participant) => (

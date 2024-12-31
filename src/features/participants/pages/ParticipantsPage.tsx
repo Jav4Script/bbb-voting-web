@@ -12,9 +12,9 @@ const ParticipantsPage: React.FC = () => {
   return (
     <div className='container mx-auto p-6'>
       <Button onClick={() => navigate('/')} className='mb-6'>
-        Back to Home
+        Voltar para Home
       </Button>
-      <h1 className='text-3xl font-bold mb-6'>Participants</h1>
+      <h1 className='text-3xl font-bold mb-6'>Participantes</h1>
 
       <div className='mb-8'>
         <ParticipantForm />

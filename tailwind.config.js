@@ -1,7 +1,8 @@
-const { fontFamily } = require('tailwindcss/defaultTheme')
+import { fontFamily } from 'tailwindcss/defaultTheme'
+import tailwindcssAnimate from 'tailwindcss-animate'
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: ['class'],
   content: ['src/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
   theme: {
@@ -47,6 +48,7 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        placeholder: '#6B7280',
       },
       borderRadius: {
         lg: `var(--radius)`,
@@ -72,5 +74,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 }

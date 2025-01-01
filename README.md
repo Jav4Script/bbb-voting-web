@@ -290,13 +290,31 @@ Seguir bons padrões de codificação é essencial para criar um código que sej
 
 - **KISS (Keep It Simple, Stupid)**: Mantenha o código o mais simples possível. Complexidade desnecessária deve ser evitada.
 
-- **TDD (Test-Driven Development)**: Escreva testes antes de escrever o código funcional. Isso ajuda a garantir que o código seja testável e que os requisitos sejam claros.
+- **DDD (Domain-Driven Design)**: Enfoca a solução dos problemas centrais do domínio do negócio, utilizando uma linguagem ubíqua compartilhada entre equipes técnicas e não-técnicas.
 
-- **BDD (Behavior-Driven Development)**: Uma extensão do TDD que se concentra no comportamento do sistema em vez de apenas na funcionalidade.
+- **CQRS (Command Query Responsibility Segregation)**: Separe operações de leitura (queries) das operações de gravação (commands) para melhorar escalabilidade e organização.
+
+- **Code Reviews**: Realizar revisões de código sistemáticas para identificar problemas antes que cheguem à produção, promovendo qualidade e aprendizado.
+
+- **Boy Scout Rule**: Deixe o código em um estado melhor do que você o encontrou." Um princípio que encoraja melhorias contínuas no código.
+
+- **High Cohesion, Low Coupling**: Projete sistemas onde os componentes tenham alta coesão (foco interno) e baixo acoplamento (dependências externas).
+
+- **MVP (Minimum Viable Product)**: Construa o menor produto funcional possível para validar hipóteses e obter feedback rápido.
+
+- **Fail Fast, Fail Often**: Encoraje experimentação rápida e iterativa para identificar falhas cedo no ciclo de desenvolvimento.
+
+- **Kaizen**: Adote uma abordagem de melhoria contínua, promovendo pequenas mudanças incrementais que gerem impacto ao longo do tempo.
+
+- **DevOps Principles**: Integre desenvolvimento e operações para acelerar entregas, melhorar qualidade e automatizar o ciclo de vida.
+
+- **Clean Code Principles**: Um conjunto de práticas para manter o código limpo, como nomes claros, métodos pequenos e responsabilidade única.
+
+- **Continuous Integration/Continuous Deployment (CI/CD)**: Automação de builds, testes e implantações para aumentar qualidade e reduzir tempo de entrega.
+
+- **Defensive Programming**: Escreva código que antecipe erros e falhas, garantindo maior resiliência a cenários excepcionais.
 
 - **CI/CD (Continuous Integration/Continuous Deployment)**: Práticas que envolvem a integração contínua de código e a entrega contínua de software, garantindo que o código esteja sempre em um estado de prontidão para produção.
-
-Esses recursos fornecem uma visão abrangente sobre boas práticas de codificação e padrões de design que podem ajudar a melhorar a qualidade do seu código.
 
 ## 📝 Licença
 

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import './styles/tailwind.css'
 
 import { ToastProvider } from '@/shared/components/ui/toast'
+import { Toaster } from '@/shared/components/ui/toaster'
 
 import App from './App'
 
@@ -16,6 +17,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
         <App />
+        <Toaster />
       </ToastProvider>
     </QueryClientProvider>
   </React.StrictMode>

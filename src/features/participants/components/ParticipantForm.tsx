@@ -26,7 +26,7 @@ const ParticipantForm: React.FC = () => {
   const form = useForm<Participant>({
     defaultValues: {
       name: '',
-      age: undefined,
+      age: 0,
       gender: '',
     },
   })
@@ -44,7 +44,7 @@ const ParticipantForm: React.FC = () => {
       onSuccess: () => {
         form.reset({
           name: '',
-          age: undefined,
+          age: 0,
           gender: '',
         })
         toast({

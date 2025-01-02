@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -39,6 +39,7 @@ const CaptchaForm: React.FC = () => {
     },
   })
   const navigate = useNavigate()
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const shouldDisplayCaptchaImage =
     captcha && captcha.image && isBlobUrl(captcha.image)
@@ -48,8 +49,20 @@ const CaptchaForm: React.FC = () => {
     enabled: !!captcha?.id,
   })
 
+  useEffect(() => {
+    if (shouldDisplayCaptchaImage && inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [shouldDisplayCaptchaImage])
+
   const handleGenerateCaptcha = () => {
-    generateCaptcha(undefined)
+    generateCaptcha(undefined, {
+      onSuccess: () => {
+        if (inputRef.current) {
+          inputRef.current.focus()
+        }
+      },
+    })
   }
 
   const handleValidateCaptcha = (data: { captchaSolution: string }) => {
@@ -119,6 +132,7 @@ const CaptchaForm: React.FC = () => {
                             type='text'
                             {...field}
                             placeholder='Digite o Captcha'
+                            ref={inputRef}
                           />
                         </FormControl>
                         <FormMessage />

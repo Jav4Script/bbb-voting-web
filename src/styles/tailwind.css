@@ -7,55 +7,59 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #FFE600; /* Fundo principal */
-  color: #7D3F98; /* Texto primário roxo */
+  background-color: #F5F5F5; /* Fundo principal (amarelo/laranja claro) */
+  color: #7D3F98; /* Texto primário (roxo) */
 }
 
 @layer base {
   :root {
-    --background: 52 100% 91%; /* #FFE600 */
-    --foreground: 276 35% 35%; /* #7D3F98 */
+    /* Cores principais */
+    --background: 39 100% 91%; /* Laranja claro (#FFE600) */
+    --foreground: 276 35% 35%; /* Roxo (#7D3F98) */
 
-    --muted: 210 75% 53%; /* #00BFFF */
-    --muted-foreground: 210 20% 98%; /* Branco leve */
+    --muted: 210 75% 80%; /* Azul claro suave (#ADD8E6) */
+    --muted-foreground: 210 15% 95%; /* Branco leve (#F5F5F5) */
 
-    --popover: 39 100% 50%; /* #FFA500 */
-    --popover-foreground: 210 20% 98%; /* Branco leve */
+    --popover: 39 100% 50%; /* Laranja (#FFA500) */
+    --popover-foreground: 0 0% 100%; /* Branco (#FFFFFF) */
 
-    --border: 214 30% 91%; /* Azul claro */
-    --input: 214 30% 91%;
+    --border: 210 60% 80%; /* Azul claro (#B0E0E6) */
+    --input: 210 60% 80%; /* Azul claro (#B0E0E6) */
 
-    --card: 0 0% 100%; /* Branco */
-    --card-foreground: 276 35% 35%; /* Roxo */
+    --card: 0 0% 100%; /* Branco (#FFFFFF) */
+    --card-foreground: 276 35% 35%; /* Roxo (#7D3F98) */
 
-    --primary: 330 70% 71%; /* #FFA500 */
-    --primary-foreground: 0 0% 100%; /* Branco */
+    --primary: 39 100% 50%; /* Laranja (#FFA500) */
+    --primary-foreground: 0 0% 100%; /* Branco (#FFFFFF) */
 
-    --secondary: 276 35% 35%; /* Roxo */
-    --secondary-foreground: 0 0% 100%; /* Branco */
+    --secondary: 276 35% 35%; /* Roxo (#7D3F98) */
+    --secondary-foreground: 0 0% 100%; /* Branco (#FFFFFF) */
 
-    --accent: 39 100% 50%; /* #FF69B4 */
-    --accent-foreground: 0 0% 100%; /* Branco */
+    --accent: 210 75% 53%; /* Azul claro vibrante (#00BFFF) */
+    --accent-foreground: 0 0% 100%; /* Branco (#FFFFFF) */
 
-    --destructive: 0 85% 56%; /* #FF3A58 */
-    --destructive-foreground: 0 0% 100%; /* Branco */
+    --destructive: 0 85% 56%; /* Vermelho (#FF3A58) */
+    --destructive-foreground: 0 0% 100%; /* Branco (#FFFFFF) */
 
-    --ring: 210 50% 70%; /* Azul claro */
+    --ring: 210 50% 70%; /* Azul claro (#87CEEB) */
 
     --radius: 0.5rem;
 
-    --placeholder: #6B7280; /* Adiciona uma cor mais escura para os placeholders */
+    --placeholder: #6B7280; /* Placeholder (cinza escuro) */
   }
 
   .dark {
+    /* Tema escuro */
     --background: 276 35% 15%; /* Roxo escuro */
     --foreground: 210 20% 98%; /* Branco leve */
 
-    --muted: 210 75% 53%; /* Azul claro */
-    --muted-foreground: 210 20% 98%; /* Branco leve */
+    --muted: 276 15% 25%; /* Roxo mais suave */
+    --muted-foreground: 210 20% 95%; /* Branco leve */
 
-    --accent: 39 100% 50%; /* #FFA500 */
+    --accent: 210 75% 53%; /* Azul claro vibrante */
+    --accent-foreground: 210 20% 98%; /* Branco leve */
   }
 }

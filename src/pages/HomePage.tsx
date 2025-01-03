@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className='container mx-auto p-4 bg-background min-h-screen flex flex-col items-center justify-center'>
+    <div className='min-h-screen flex flex-col items-center justify-center bg-background'>
       <h1 className='text-4xl font-bold mb-6 text-center text-foreground'>
         Bem-vindo
       </h1>

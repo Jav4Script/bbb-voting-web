@@ -1,10 +1,10 @@
-import { fontFamily } from 'tailwindcss/defaultTheme'
-import tailwindcssAnimate from 'tailwindcss-animate'
+import { fontFamily } from 'tailwindcss/defaultTheme';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['class'],
-  content: ['src/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
+  darkMode: ['class'], // Suporte para tema escuro
+  content: ['src/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'], // Ajuste os caminhos para corresponder ao seu projeto
   theme: {
     container: {
       center: true,
@@ -75,4 +75,4 @@ export default {
     },
   },
   plugins: [tailwindcssAnimate],
-}
+};

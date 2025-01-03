@@ -48,10 +48,12 @@ const FinalResultList: React.FC = () => {
   return (
     <div className='mx-4 md:mx-6 lg:mx-8'>
       <div className='mb-6'>
-        <h2 className='text-xl font-bold'>Total Votes: {results.totalVotes}</h2>
+        <h2 className='text-xl font-bold'>
+          Total de Votos: {results.totalVotes}
+        </h2>
         {results.votesByHour && (
           <div>
-            <h3 className='text-lg font-semibold'>Votes by Hour:</h3>
+            <h3 className='text-lg font-semibold'>Votos por Hora:</h3>
             <ul>
               {Object.entries(results.votesByHour).map(([hour, votes]) => (
                 <li key={hour}>

@@ -150,7 +150,11 @@ const CaptchaForm: React.FC = () => {
               </Form>
             </div>
           )}
-          <Button onClick={handleBackToHome} className='w-full'>
+
+          <Button
+            onClick={handleBackToHome}
+            className='w-full bg-secondary text-secondary-foreground'
+          >
             Voltar para Home
           </Button>
         </div>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-interface IpInfo {
+export interface IpInfo {
   ip: string
   city: string
   region: string

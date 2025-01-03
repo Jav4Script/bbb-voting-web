@@ -84,6 +84,7 @@ const ParticipantForm: React.FC = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               name='age'
               control={form.control}
@@ -97,6 +98,7 @@ const ParticipantForm: React.FC = () => {
                 </FormItem>
               )}
             />
+
             <FormField
               name='gender'
               control={form.control}
@@ -110,6 +112,7 @@ const ParticipantForm: React.FC = () => {
                 </FormItem>
               )}
             />
+
             <Button type='submit' className='w-full'>
               Criar Participante
             </Button>

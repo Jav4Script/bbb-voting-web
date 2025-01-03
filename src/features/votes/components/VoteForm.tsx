@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, FormProvider, Controller } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -20,8 +20,10 @@ import RadioCardItem from '@/shared/components/RadioCardItem'
 import { useGetParticipants } from '@shared/hooks/useGetParticipants'
 import { useCaptchaTokenStore } from '@/shared/stores/useCaptchaTokenStore'
 import { useParticipantStore } from '@/shared/stores/useParticipantStore'
+import VoteSuccessCard from '@features/votes/components/VoteSuccessCard'
 
 const VoteForm: React.FC = () => {
+  const [voteSuccess, setVoteSuccess] = useState<Vote | null>(null)
   const methods = useForm<Vote>({
     defaultValues: {
       device: '',
@@ -58,15 +60,14 @@ const VoteForm: React.FC = () => {
       castVote(
         { vote: data, captchaToken },
         {
-          onSuccess: () => {
+          onSuccess: (vote) => {
             reset()
-            clearCaptchaToken()
+            setVoteSuccess(vote)
             toast({
               title: 'Sucesso',
               description: 'Voto registrado com sucesso!',
               variant: 'default',
             })
-            navigate('/captcha')
           },
           onError: () => {
             toast({
@@ -80,11 +81,29 @@ const VoteForm: React.FC = () => {
     }
   }
 
+  const handleVoteAgain = () => {
+    clearCaptchaToken()
+    setVoteSuccess(null)
+    navigate('/captcha')
+  }
+
+  if (voteSuccess) {
+    return (
+      <VoteSuccessCard
+        ipInfo={ipInfo}
+        onVoteAgain={handleVoteAgain}
+        onViewResults={() => navigate('/results/partial')}
+        onBackToHome={() => navigate('/')}
+      />
+    )
+  }
+
   return (
     <Card className='shadow-lg'>
       <CardHeader>
         <CardTitle>Formulário de Votação</CardTitle>
       </CardHeader>
+
       <CardContent>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
@@ -123,6 +142,7 @@ const VoteForm: React.FC = () => {
                 </RadioCardGroup>
               )}
             />
+
             <Button type='submit' className='w-full' disabled={isLoading}>
               {isLoading ? 'Carregando...' : 'Registrar Voto'}
             </Button>

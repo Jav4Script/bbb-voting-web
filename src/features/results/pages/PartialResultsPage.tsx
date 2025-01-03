@@ -15,6 +15,11 @@ const PartialResultsPage: React.FC = () => {
     <div className='container mx-auto p-4 space-y-8'>
       <h1 className='text-2xl font-bold mb-4'>Resultados Parciais</h1>
       <PartialResultList />
+
+      <Button onClick={() => navigate('/captcha')} className='w-full mt-4'>
+        Votar Novamente
+      </Button>
+
       <Button
         onClick={handleBack}
         className='w-full bg-secondary text-secondary-foreground'

@@ -3,7 +3,9 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
+      - chore/react-19-migration-clean
 
 permissions:
   contents: write
@@ -29,6 +31,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Persist regenerated lockfile
+        if: github.event_name == 'push' && github.ref_name == 'chore/react-19-migration-clean'
         run: |
           if git diff --quiet -- pnpm-lock.yaml; then
             echo "Lockfile already synchronized."
@@ -38,7 +41,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add pnpm-lock.yaml
           git commit -m "chore: regenerate pnpm lockfile for React 19"
-          git push origin HEAD:${GITHUB_HEAD_REF}
+          git push origin HEAD:${GITHUB_REF_NAME}
 
       - name: Build
         run: pnpm run build

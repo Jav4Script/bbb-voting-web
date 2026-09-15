@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { useVoteStore } from '@features/votes/stores/useVoteStore'
 import { castVote } from '@features/votes/services/voteService'
@@ -8,14 +8,12 @@ export const useCastVote = () => {
   const queryClient = useQueryClient()
   const addVote = useVoteStore((state) => state.addVote)
 
-  return useMutation(
-    ({ vote, captchaToken }: { vote: Vote; captchaToken: string }) =>
+  return useMutation({
+    mutationFn: ({ vote, captchaToken }: { vote: Vote; captchaToken: string }) =>
       castVote(vote, captchaToken),
-    {
-      onSuccess: (data) => {
-        addVote(data)
-        queryClient.invalidateQueries('votes')
-      },
-    }
-  )
+    onSuccess: (data) => {
+      addVote(data)
+      queryClient.invalidateQueries({ queryKey: ['votes'] })
+    },
+  })
 }

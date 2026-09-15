@@ -5,6 +5,9 @@ on:
     branches:
       - chore/react-router-7-migration
 
+permissions:
+  contents: write
+
 jobs:
   regenerate:
     runs-on: ubuntu-latest

@@ -1,9 +1,8 @@
 name: Validation Branch
 
 on:
-  push:
-    branches:
-      - validation/development-deps-23
+  pull_request:
+    branches: [main]
 
 jobs:
   validate:

@@ -27,8 +27,8 @@ jobs:
       - name: Enable pnpm
         run: corepack enable && corepack prepare pnpm@9.15.9 --activate
 
-      - name: Regenerate lockfile
-        run: pnpm install --lockfile-only
+      - name: Resolve TanStack Query
+        run: pnpm add @tanstack/react-query@5.102.8 --save-exact --lockfile-only
 
       - name: Commit lockfile
         run: |
@@ -38,6 +38,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add pnpm-lock.yaml
+          git add pnpm-lock.yaml package.json
           git commit -m "chore: regenerate pnpm lockfile"
           git push origin HEAD:chore/tanstack-query-v5-migration

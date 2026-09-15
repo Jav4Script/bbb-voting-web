@@ -1,4 +1,5 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 import { getCaptchaImage } from '@features/captcha/services/captchaService'
 import { useCaptchaStore } from '@features/captcha/stores/useCaptchaStore'
@@ -14,13 +15,20 @@ export const useGetCaptchaImage = ({
 }: useGetCaptchaImageProps) => {
   const setCaptchaImage = useCaptchaStore((state) => state.setCaptchaImage)
 
-  return useQuery(['captcha', captchaId], () => getCaptchaImage(captchaId), {
-    onSuccess: (data) => {
-      setCaptchaImage(data)
-    },
+  const query = useQuery({
+    queryKey: ['captcha', captchaId],
+    queryFn: () => getCaptchaImage(captchaId),
     enabled,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     staleTime: Infinity,
   })
+
+  useEffect(() => {
+    if (query.data) {
+      setCaptchaImage(query.data)
+    }
+  }, [query.data, setCaptchaImage])
+
+  return query
 }

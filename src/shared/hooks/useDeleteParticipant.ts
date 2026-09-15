@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { useParticipantStore } from '@shared/stores/useParticipantStore'
 import { deleteParticipant } from '@shared/services/participantService'
@@ -9,10 +9,11 @@ export const useDeleteParticipant = () => {
     (state) => state.removeParticipant
   )
 
-  return useMutation(deleteParticipant, {
+  return useMutation({
+    mutationFn: deleteParticipant,
     onSuccess: (participantId) => {
       removeParticipant(participantId)
-      queryClient.invalidateQueries('participants')
+      queryClient.invalidateQueries({ queryKey: ['participants'] })
     },
   })
 }

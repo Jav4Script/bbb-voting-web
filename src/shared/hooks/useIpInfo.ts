@@ -1,7 +1,10 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { getIpInfo } from '@/shared/services/ipService'
 
 export const useIpInfo = () => {
-  return useQuery('ipInfo', getIpInfo)
+  return useQuery({
+    queryKey: ['ipInfo'],
+    queryFn: getIpInfo,
+  })
 }

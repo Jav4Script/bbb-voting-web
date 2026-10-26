@@ -26,6 +26,11 @@ jobs:
       - name: Lint
         run: pnpm exec eslint src
 
+      - name: Diagnose Prettier output
+        run: |
+          pnpm dlx prettier@3.9.10 --write src/hooks/use-toast.ts
+          git diff -- src/hooks/use-toast.ts
+
       - name: Check changed-code and manifest formatting
         run: pnpm dlx prettier@3.9.10 --check package.json eslint.config.js src/features/votes/stores/useVoteStore.ts src/hooks/use-toast.ts src/shared/components/ui/input.tsx src/shared/components/ui/textarea.tsx
 

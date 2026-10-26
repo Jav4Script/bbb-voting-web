@@ -1,6 +1,9 @@
 name: Regenerate Security Lockfile
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - security/webpack-dev-server-5.2.7
@@ -10,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: security/webpack-dev-server-5.2.7
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -17,5 +22,6 @@ jobs:
       - run: pnpm install --lockfile-only
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
+          branch: security/webpack-dev-server-5.2.7
           commit_message: "chore: regenerate pnpm lockfile for security patch"
           file_pattern: pnpm-lock.yaml

@@ -15,7 +15,14 @@ type ToasterToast = ToastProps & {
   action?: ToastActionElement
 }
 
-type Action = 
+let count = 0
+
+function genId() {
+  count = (count + 1) % Number.MAX_SAFE_INTEGER
+  return count.toString()
+}
+
+type Action =
   | {
       type: 'ADD_TOAST'
       toast: ToasterToast
@@ -151,13 +158,6 @@ function toast({ ...props }: Toast) {
     update,
   }
 }
-
-function genId() {
-  count = (count + 1) % Number.MAX_SAFE_INTEGER
-  return count.toString()
-}
-
-let count = 0
 
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState)

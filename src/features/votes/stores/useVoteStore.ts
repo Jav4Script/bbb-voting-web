@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { castVote, getVotes } from '../services/voteService'
+import { getVotes } from '../services/voteService'
 import { Vote } from '../entities/Vote'
 
 interface VoteStore {

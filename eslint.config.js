@@ -11,6 +11,9 @@ export default [
   pluginReact.configs.flat.recommended,
   {
     settings: {
+      react: {
+        version: 'detect',
+      },
       'import/resolver': {
         node: {
           paths: ['src'],
@@ -20,6 +23,7 @@ export default [
     },
     rules: {
       'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
     },
   },
 ]
